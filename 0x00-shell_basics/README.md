@@ -10,3 +10,4 @@ deleting files
 deleting dir
 long list
 print f type
+creating link
