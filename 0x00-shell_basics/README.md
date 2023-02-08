@@ -4,3 +4,4 @@ back home
 lists in long format
 list even hidden files in long
 list IDs too
+creating directories
