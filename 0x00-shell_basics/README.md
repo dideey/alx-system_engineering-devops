@@ -8,3 +8,5 @@ creating directories
 moving files
 deleting files
 deleting dir
+long list
+print f type
