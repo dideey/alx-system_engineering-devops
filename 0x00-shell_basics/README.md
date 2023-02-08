@@ -6,3 +6,5 @@ list even hidden files in long
 list IDs too
 creating directories
 moving files
+deleting files
+deleting dir
