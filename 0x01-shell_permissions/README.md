@@ -6,3 +6,4 @@ creates file
 executes
 mutiple permissions
 everybody has rights
+all rights reserved
