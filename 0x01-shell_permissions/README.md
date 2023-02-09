@@ -4,3 +4,4 @@ prints group info
 changes file owner
 creates file
 executes
+mutiple permissions
