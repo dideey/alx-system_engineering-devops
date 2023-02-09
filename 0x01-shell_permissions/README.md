@@ -9,3 +9,4 @@ everybody has rights
 all rights reserved
 all,x,wx
 reverse permissions
+directories only
