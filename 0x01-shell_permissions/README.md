@@ -5,3 +5,4 @@ changes file owner
 creates file
 executes
 mutiple permissions
+everybody has rights
