@@ -8,3 +8,4 @@ mutiple permissions
 everybody has rights
 all rights reserved
 all,x,wx
+reverse permissions
