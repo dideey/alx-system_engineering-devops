@@ -10,3 +10,4 @@ all rights reserved
 all,x,wx
 reverse permissions
 directories only
+directory with specific mode
