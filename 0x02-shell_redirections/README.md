@@ -12,3 +12,4 @@ delete js files
 lists directories
  lists 10new files
 uniqness
+find
