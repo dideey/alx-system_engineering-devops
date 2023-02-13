@@ -18,3 +18,4 @@ the next 3 lines
 ëxeptions
 alpha letters
 translate
+without c
