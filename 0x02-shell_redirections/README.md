@@ -7,3 +7,5 @@ first lines
 third line
 create file
 redirect
+duplicate
+delete js files
