@@ -16,3 +16,4 @@ find
 word count
 the next 3 lines
 ëxeptions
+alpha letters
