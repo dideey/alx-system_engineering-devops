@@ -1,3 +1,2 @@
 #!/bin/bash
-printenv
-print all
+set built-in
