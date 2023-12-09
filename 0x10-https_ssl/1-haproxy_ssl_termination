@@ -52,11 +52,4 @@ backend www-backend
 backend letsencrypt-backend
         server lentsencrypt 127.0.0.1:8888
 
-   listen load_balancer
-   bind *:80
-   mode http
-   balance roundrobin
-   option httpclose
-   option forwardfor
-   server 269167-web-01 54.175.68.91:80 check
-   server 269167-web-02 100.25.145.40:80 check
+   
