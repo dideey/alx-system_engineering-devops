@@ -33,13 +33,19 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
 
-frontend http_front
+frontend www-http
+        bind 0.0.0.0:80
+        reqadd X-Forwarded-Proto:\ http
+        default_backend www-backend
+
+frontend www-https
         bind *:443 ssl crt /etc/letsencrypt/live/www.diddey.tech/fullchain.pem
         reqadd X-Forwarded-Proto:\ https
         default_backend www-backend
 
 backend www-backend
         balance roundrobin
+         redirect scheme https if !{ ssl_fc }
         server 269167-web-01 54.175.68.91:80
         server 269167-web-01 100.25.145.40:80
 
