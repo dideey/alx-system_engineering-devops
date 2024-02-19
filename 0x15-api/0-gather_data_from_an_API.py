@@ -1,5 +1,7 @@
 #!/usr/bin/python3
-"""importing the libraries"""
+"""importing the libraries
+"""
+
 import requests
 import sys
 
@@ -49,6 +51,8 @@ def main():
     """output"""
     print(f"Employee {user_name} is done with tasks(
         {task_completed}/{total_tasks}): ")
+
+    """"printing list of done tasks"""
     for todo in todos:
         if todo['completed']:
             print(f"     {todo['title']}")
