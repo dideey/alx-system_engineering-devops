@@ -3,6 +3,8 @@
 import requests
 import sys
 
+""""Gathering data from an API"""
+
 
 def get_user(employee_id):
     """get user details"""
