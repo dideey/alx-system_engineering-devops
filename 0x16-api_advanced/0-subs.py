@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """"getting number of subs"""
 import requests
-
+from sys import argv
 
 def number_of_subscribers(subreddit):
     """returns number of subscribers  for a subreddit"""
@@ -12,3 +12,6 @@ def number_of_subscribers(subreddit):
         return response.json().get('data').get('subscribers')
     else:
         return 0
+
+if __name__ == "__main__":
+    number_of_subscribers(argv[1]) 
