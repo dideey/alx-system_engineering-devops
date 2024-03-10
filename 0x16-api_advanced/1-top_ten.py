@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""""getting top ten posts"""
 import requests
 
 
