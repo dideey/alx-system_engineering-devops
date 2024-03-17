@@ -1,47 +1,36 @@
 #!/usr/bin/python3
-"""recursive function that queries the Reddit API, parses the title of all"""
+"""recursive function that queries the reddit api"""
 import requests
 
 
-def count_words(subreddit, word_list, instances={}, after="", count=0):
-    """Printing counts of given words in hot posts."""
-    hot_url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
-    header = {
-        "User-Agent": "alx:lin.api.adv:v1.0.0 (by /u/gena)"
-    }
-    param_list = {
-        "after": after,
-        "count": count,
-        "limit": 100
-    }
-    res = requests.get(hot_url, headers=header, params=param_list,
-                            allow_redirects=False)
-    try:
-        results = res.json()
-        if res.status_code == 404:
-            raise Exception
-    except Exception:
-        print("")
-        return
-
-    results = results.get("data")
-    after = results.get("after")
-    count += results.get("dist")
-    for c in results.get("children"):
-        title = c.get("data").get("title").lower().split()
-        for word in word_list:
-            if word.lower() in title:
-                hot_times = len([t for t in title if t == word.lower()])
-                if instances.get(word) is None:
-                    instances[word] = hot_times
-                else:
-                    instances[word] += hot_times
-
+def count_words(subreddit, word_list, found_list=[], after=None):
+    """print word count"""
+    user_agent = {'User-agent': 'test45'}
+    posts = requests.get('http://www.reddit.com/r/{}/hot.json?after={}'
+                         .format(subreddit, after), headers=user_agent)
     if after is None:
-        if len(instances) == 0:
-            print("")
-            return
-        instances = sorted(instances.items(), key=lambda kv: (-kv[1], kv[0]))
-        [print("{}: {}".format(k, v)) for k, v in instances]
+        word_list = [word.lower() for word in word_list]
+
+    if posts.status_code == 200:
+        posts = posts.json()['data']
+        aft = posts['after']
+        posts = posts['children']
+        for post in posts:
+            title = post['data']['title'].lower()
+            for word in title.split(' '):
+                if word in word_list:
+                    found_list.append(word)
+        if aft is not None:
+            count_words(subreddit, word_list, found_list, aft)
+        else:
+            result = {}
+            for word in found_list:
+                if word.lower() in result.keys():
+                    result[word.lower()] += 1
+                else:
+                    result[word.lower()] = 1
+            for key, value in sorted(result.items(), key=lambda item: item[1],
+                                     reverse=True):
+                print('{}: {}'.format(key, value))
     else:
-        count_words(subreddit, word_list, instances, after, count)
+        return
