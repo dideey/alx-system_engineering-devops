@@ -35,7 +35,7 @@ def main():
         sys.exit(1)
 
     user = get_user(employee_id)
-    name = user.get('name', f"User {employee_id}")
+    name = user.get('username', f"User {employee_id}")
     todos = get_todo(employee_id)
 
     with open(f'{employee_id}.csv', 'w', newline='') as csvfile:
