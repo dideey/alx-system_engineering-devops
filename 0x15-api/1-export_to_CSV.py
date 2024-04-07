@@ -2,9 +2,10 @@
 """importing the libraries
 """
 
+import csv
 import requests
 import sys
-import csv
+
 
 """"Gathering data from an API"""
 
@@ -36,11 +37,12 @@ def main():
     user = get_user(employee_id)
     name = user.get('name', f"User {employee_id}")
     todos = get_todo(employee_id)
-    
 
     with open(f'{employee_id}.csv', 'w', newline='') as csvfile:
-        fieldnames = ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
+        fieldnames = ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS",
+                      "TASK_TITLE"]
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames,
+                                quoting=csv.QUOTE_ALL)
         for todo in todos:
             writer.writerow({
                 "USER_ID": employee_id,
@@ -48,5 +50,7 @@ def main():
                 "TASK_COMPLETED_STATUS": todo['completed'],
                 "TASK_TITLE": todo['title']
             })
+
+
 if __name__ == "__main__":
     main()
